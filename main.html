@@ -16,9 +16,9 @@
          <div class="attribute">
             <label >Clock</label>
             <div>
-               <input type="radio" id="hours24" name="clock_radio" value="24">
+               <input type="radio" id="hours24" name="clock" value="24">
                <label for="hours24">24 Hours</label><br>
-               <input type="radio" id="hours48" name="clock_radio" value="48">
+               <input type="radio" id="hours48" name="clock" value="48">
                <label for="hours48">48 Hours</label><br>
             </div>
          </div>
@@ -86,52 +86,75 @@
                <label for="fsint7d">7 Days</label><br>
             </div>
          </div>
-         <h3 class="attribute">EZO configuration</h3>
          <div class="attribute">
+            <h3>
+            EZO configuration: <strong id="ezoLabel">DO Configuration</strong>
             <div >
-               <button class="tab" onclick="ezoSelect('DO')">DO</button>
-               <button class="tab" onclick="ezoSelect('pH')">pH</button>
-               <!-- <button class="tab" onclick="ezoSelect('ORP')">ORP</button>
-                  <button class="tab" onclick="ezoSelect('TEMP')">TEMP</button>
-                  <button class="tab" onclick="ezoSelect('FLOW')">FLOW</button>
-                  <button class="tab" onclick="ezoSelect('EC')">EC</button>
-                  <button class="tab" onclick="ezoSelect('CO2')">CO2</button>
-                  <button class="tab" onclick="ezoSelect('PRS')">PRS</button>
-                  <button class="tab" onclick="ezoSelect('HUM')">HUM</button>
-                  <button class="tab" onclick="ezoSelect('O2')">O2</button> -->
+               <button class="tab buttonActive" onclick="ezoSelect('DO', this)">DO</button>
+               <button class="tab" onclick="ezoSelect('pH', this)">pH</button>
+               <button class="tab" onclick="ezoSelect('ORP', this)">ORP</button>
+               <button class="tab" onclick="ezoSelect('TEMP', this)">TEMP</button>
+               <button class="tab" onclick="ezoSelect('FLOW', this)">FLOW</button>
+               <button class="tab" onclick="ezoSelect('EC', this)">EC</button>
+               <button class="tab" onclick="ezoSelect('CO2', this)">CO2</button>
+               <button class="tab" onclick="ezoSelect('PRS', this)">PRS</button>
+               <button class="tab" onclick="ezoSelect('HUM', this)">HUM</button>
+               <button class="tab" onclick="ezoSelect('O2', this)">O2</button>
             </div>
-            <div id="ezoConfigurations">
-               <div class="econfig active" id="DO">
-                  <label>DO Configuration</label>
-                  <div class="eAttributes">
-                     <label>Units</label>
-                     <div data-type="radio" data-name="doRandom">
-                        <input type="radio" id="doUnitsPPM" name="doRandom" value="Something else">
-                        <label for="doUnitsPPM">Something else</label><br>
-                        <input type="radio" id="doUnitsPercent" name="doRandom" value="xyzzzz">
-                        <label for="doUnitsPercent">XYZ</label><br>
+         </div>
+         <div id="ezoConfigurations">
+            <div class="econfig active" id="DO">
+               <div class="eAttributes">
+                  <div class="attribute">
+                     <label>some label</label>
+                     <div>
+                        <input type="radio" id="THIS-ID-SHOULD-MATCH-THE-LABEL-FOR" name="THE KEY IN THE JSON FOR A GIVEN FIELD GOES HERE" value="VALUE_IN_JSON_GOES_HERE">
+                        <label for="THIS-ID-SHOULD-MATCH-THE-LABEL-FOR">meters</label><br>
+                        <input type="radio" id="DOUnitsPercent" name="DOUnits" value="miles" checked>
+                        <label for="DOUnitsPercent">miles</label><br>
                      </div>
-                     <label>4-20mA Transfer function</label>
-                     <div data-type="number">
-                        <input type="number" id="doTransferFunction4" name="doRadomNumbers">
-                        <label for="doTransferFunction4">4 mA</label><br>
-                        <input type="number" id="doTransferFunction20" name="doRadomNumbers99999">
-                        <label for="doTransferFunction20">20 mA</label><br>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Points - DO</label>
+                     <div>
+                        <input type="radio" id="DOCalibrationPoints1" name="DOCalibrationPoints" value="1" onclick="setNumericFieldAmount(1)">
+                        <label for="DOCalibrationPoints1">1</label><br>
+                        <input type="radio" id="DOCalibrationPoints2" name="DOCalibrationPoints" value="2" onclick="setNumericFieldAmount(2)">
+                        <label for="DOCalibrationPoints2">2</label><br>
+                        <input type="radio" id="DOCalibrationPoints3" name="DOCalibrationPoints" value="3" onclick="setNumericFieldAmount(3)">
+                        <label for="DOCalibrationPoints3">3</label><br>  
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Solution Values - DO</label>
+                     <div class="calibSolnValues">
+                        <input type="number" id="DOCalibrationPoints1Entry" name="DOSolutionValue1">
+                        <label for="DOCalibrationPoints1Entry">Point</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>a number field</label>
+                     <div>
+                        <input type="number" id="DOTransferFunction4" name="DOTransferFunction4" value="default value 999999999999999">
+                        <label for="DOTransferFunction4">4 mA</label><br>
                      </div>
                   </div>
                </div>
-               <div class="econfig inactive" id="pH">
-                  <label>pH Configuration</label>
-                  <div class="eAttributes">
-                     <label>Units</label>
-                     <div data-type="radio" data-name='phUnits'>
+            </div>
+            <div class="econfig inactive" id="pH">
+               <div class="eAttributes">
+                  <div class="attribute">
+                     <label>Units - pH</label>
+                     <div>
                         <input type="radio" id="phUnitsPPM" name="phUnits" value="PPM">
                         <label for="phUnitsPPM">PPM</label><br>
                         <input type="radio" id="phUnitsPercent" name="phUnits" value="Percent">
                         <label for="phUnitsPercent">%</label><br>
                      </div>
-                     <label>Calibration Points</label>
-                     <div data-type="radio" data-name="phCalibrationPoints">
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Points - pH</label>
+                     <div>
                         <input type="radio" id="phCalibrationPoints1" name="phCalibrationPoints" value="1" onclick="setNumericFieldAmount(1)">
                         <label for="phCalibrationPoints1">1</label><br>
                         <input type="radio" id="phCalibrationPoints2" name="phCalibrationPoints" value="2" onclick="setNumericFieldAmount(2)">
@@ -139,17 +162,341 @@
                         <input type="radio" id="phCalibrationPoints3" name="phCalibrationPoints" value="3" onclick="setNumericFieldAmount(3)">
                         <label for="phCalibrationPoints3">3</label><br>  
                      </div>
-                     <label>Calibration Solution Values</label>
-                     <div data-type="number" id="calibSolnValues">
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Solution Values - pH</label>
+                     <div class="calibSolnValues">
                         <input type="number" id="phCalibrationPoints1Entry" name="phSolutionValue1">
                         <label for="phCalibrationPoints1Entry">Point</label><br>
                      </div>
-                     <label>4-20mA Transfer function</label>
-                     <div data-type="number">
+                  </div>
+                  <div class="attribute">
+                     <label>4-20mA Transfer function - pH</label>
+                     <div>
                         <input type="number" id="phTransferFunction4" name="phTransferFunction4">
                         <label for="phTransferFunction4">4 mA</label><br>
                         <input type="number" id="phTransferFunction20" name="phTransferFunction20">
                         <label for="phTransferFunction20">20 mA</label><br>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="econfig inactive" id="ORP">
+               <div class="eAttributes">
+                  <div class="attribute">
+                     <label>Units - ORP</label>
+                     <div>
+                        <input type="radio" id="ORPUnitsPPM" name="ORPUnits" value="PPM">
+                        <label for="ORPUnitsPPM">PPM</label><br>
+                        <input type="radio" id="ORPUnitsPercent" name="ORPUnits" value="Percent">
+                        <label for="ORPUnitsPercent">%</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Points - ORP</label>
+                     <div>
+                        <input type="radio" id="ORPCalibrationPoints1" name="ORPCalibrationPoints" value="1" onclick="setNumericFieldAmount(1)">
+                        <label for="ORPCalibrationPoints1">1</label><br>
+                        <input type="radio" id="ORPCalibrationPoints2" name="ORPCalibrationPoints" value="2" onclick="setNumericFieldAmount(2)">
+                        <label for="ORPCalibrationPoints2">2</label><br>
+                        <input type="radio" id="ORPCalibrationPoints3" name="ORPCalibrationPoints" value="3" onclick="setNumericFieldAmount(3)">
+                        <label for="ORPCalibrationPoints3">3</label><br>  
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Solution Values - ORP</label>
+                     <div class="calibSolnValues">
+                        <input type="number" id="ORPCalibrationPoints1Entry" name="ORPSolutionValue1">
+                        <label for="ORPCalibrationPoints1Entry">Point</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>4-20mA Transfer function - ORP</label>
+                     <div>
+                        <input type="number" id="ORPTransferFunction4" name="ORPTransferFunction4">
+                        <label for="ORPTransferFunction4">4 mA</label><br>
+                        <input type="number" id="ORPTransferFunction20" name="ORPTransferFunction20">
+                        <label for="ORPTransferFunction20">20 mA</label><br>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="econfig inactive" id="TEMP">
+               <div class="eAttributes">
+                  <div class="attribute">
+                     <label>Units - TEMP</label>
+                     <div>
+                        <input type="radio" id="TEMPUnitsPPM" name="TEMPUnits" value="PPM">
+                        <label for="TEMPUnitsPPM">PPM</label><br>
+                        <input type="radio" id="TEMPUnitsPercent" name="TEMPUnits" value="Percent">
+                        <label for="TEMPUnitsPercent">%</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Points - TEMP</label>
+                     <div>
+                        <input type="radio" id="TEMPCalibrationPoints1" name="TEMPCalibrationPoints" value="1" onclick="setNumericFieldAmount(1)">
+                        <label for="TEMPCalibrationPoints1">1</label><br>
+                        <input type="radio" id="TEMPCalibrationPoints2" name="TEMPCalibrationPoints" value="2" onclick="setNumericFieldAmount(2)">
+                        <label for="TEMPCalibrationPoints2">2</label><br>
+                        <input type="radio" id="TEMPCalibrationPoints3" name="TEMPCalibrationPoints" value="3" onclick="setNumericFieldAmount(3)">
+                        <label for="TEMPCalibrationPoints3">3</label><br>  
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Solution Values - TEMP</label>
+                     <div class="calibSolnValues">
+                        <input type="number" id="TEMPCalibrationPoints1Entry" name="TEMPSolutionValue1">
+                        <label for="TEMPCalibrationPoints1Entry">Point</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>4-20mA Transfer function - TEMP</label>
+                     <div>
+                        <input type="number" id="TEMPTransferFunction4" name="TEMPTransferFunction4">
+                        <label for="TEMPTransferFunction4">4 mA</label><br>
+                        <input type="number" id="TEMPTransferFunction20" name="TEMPTransferFunction20">
+                        <label for="TEMPTransferFunction20">20 mA</label><br>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="econfig inactive" id="FLOW">
+               <div class="eAttributes">
+                  <div class="attribute">
+                     <label>Units - FLOW</label>
+                     <div>
+                        <input type="radio" id="FLOWUnitsPPM" name="FLOWUnits" value="PPM">
+                        <label for="FLOWUnitsPPM">PPM</label><br>
+                        <input type="radio" id="FLOWUnitsPercent" name="FLOWUnits" value="Percent">
+                        <label for="FLOWUnitsPercent">%</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Points - FLOW</label>
+                     <div>
+                        <input type="radio" id="FLOWCalibrationPoints1" name="FLOWCalibrationPoints" value="1" onclick="setNumericFieldAmount(1)">
+                        <label for="FLOWCalibrationPoints1">1</label><br>
+                        <input type="radio" id="FLOWCalibrationPoints2" name="FLOWCalibrationPoints" value="2" onclick="setNumericFieldAmount(2)">
+                        <label for="FLOWCalibrationPoints2">2</label><br>
+                        <input type="radio" id="FLOWCalibrationPoints3" name="FLOWCalibrationPoints" value="3" onclick="setNumericFieldAmount(3)">
+                        <label for="FLOWCalibrationPoints3">3</label><br>  
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Solution Values - FLOW</label>
+                     <div class="calibSolnValues">
+                        <input type="number" id="FLOWCalibrationPoints1Entry" name="FLOWSolutionValue1">
+                        <label for="FLOWCalibrationPoints1Entry">Point</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>4-20mA Transfer function - FLOW</label>
+                     <div>
+                        <input type="number" id="FLOWTransferFunction4" name="FLOWTransferFunction4">
+                        <label for="FLOWTransferFunction4">4 mA</label><br>
+                        <input type="number" id="FLOWTransferFunction20" name="FLOWTransferFunction20">
+                        <label for="FLOWTransferFunction20">20 mA</label><br>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="econfig inactive" id="EC">
+               <div class="eAttributes">
+                  <div class="attribute">
+                     <label>Units - EC</label>
+                     <div>
+                        <input type="radio" id="ECUnitsPPM" name="ECUnits" value="PPM">
+                        <label for="ECUnitsPPM">PPM</label><br>
+                        <input type="radio" id="ECUnitsPercent" name="ECUnits" value="Percent">
+                        <label for="ECUnitsPercent">%</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Points - EC</label>
+                     <div>
+                        <input type="radio" id="ECCalibrationPoints1" name="ECCalibrationPoints" value="1" onclick="setNumericFieldAmount(1)">
+                        <label for="ECCalibrationPoints1">1</label><br>
+                        <input type="radio" id="ECCalibrationPoints2" name="ECCalibrationPoints" value="2" onclick="setNumericFieldAmount(2)">
+                        <label for="ECCalibrationPoints2">2</label><br>
+                        <input type="radio" id="ECCalibrationPoints3" name="ECCalibrationPoints" value="3" onclick="setNumericFieldAmount(3)">
+                        <label for="ECCalibrationPoints3">3</label><br>  
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Solution Values - EC</label>
+                     <div class="calibSolnValues">
+                        <input type="number" id="ECCalibrationPoints1Entry" name="ECSolutionValue1">
+                        <label for="ECCalibrationPoints1Entry">Point</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>4-20mA Transfer function - EC</label>
+                     <div>
+                        <input type="number" id="ECTransferFunction4" name="ECTransferFunction4">
+                        <label for="ECTransferFunction4">4 mA</label><br>
+                        <input type="number" id="ECTransferFunction20" name="ECTransferFunction20">
+                        <label for="ECTransferFunction20">20 mA</label><br>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="econfig inactive" id="CO2">
+               <div class="eAttributes">
+                  <div class="attribute">
+                     <label>Units - CO2</label>
+                     <div>
+                        <input type="radio" id="CO2UnitsPPM" name="CO2Units" value="PPM">
+                        <label for="CO2UnitsPPM">PPM</label><br>
+                        <input type="radio" id="CO2UnitsPercent" name="CO2Units" value="Percent">
+                        <label for="CO2UnitsPercent">%</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Points - CO2</label>
+                     <div>
+                        <input type="radio" id="CO2CalibrationPoints1" name="CO2CalibrationPoints" value="1" onclick="setNumericFieldAmount(1)">
+                        <label for="CO2CalibrationPoints1">1</label><br>
+                        <input type="radio" id="CO2CalibrationPoints2" name="CO2CalibrationPoints" value="2" onclick="setNumericFieldAmount(2)">
+                        <label for="CO2CalibrationPoints2">2</label><br>
+                        <input type="radio" id="CO2CalibrationPoints3" name="CO2CalibrationPoints" value="3" onclick="setNumericFieldAmount(3)">
+                        <label for="CO2CalibrationPoints3">3</label><br>  
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Solution Values - CO2</label>
+                     <div class="calibSolnValues">
+                        <input type="number" id="CO2CalibrationPoints1Entry" name="CO2SolutionValue1">
+                        <label for="CO2CalibrationPoints1Entry">Point</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>4-20mA Transfer function - CO2</label>
+                     <div>
+                        <input type="number" id="CO2TransferFunction4" name="CO2TransferFunction4">
+                        <label for="CO2TransferFunction4">4 mA</label><br>
+                        <input type="number" id="CO2TransferFunction20" name="CO2TransferFunction20">
+                        <label for="CO2TransferFunction20">20 mA</label><br>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="econfig inactive" id="PRS">
+               <div class="eAttributes">
+                  <div class="attribute">
+                     <label>Units - PRS</label>
+                     <div>
+                        <input type="radio" id="PRSUnitsPPM" name="PRSUnits" value="PPM">
+                        <label for="PRSUnitsPPM">PPM</label><br>
+                        <input type="radio" id="PRSUnitsPercent" name="PRSUnits" value="Percent">
+                        <label for="PRSUnitsPercent">%</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Points - PRS</label>
+                     <div>
+                        <input type="radio" id="PRSCalibrationPoints1" name="PRSCalibrationPoints" value="1" onclick="setNumericFieldAmount(1)">
+                        <label for="PRSCalibrationPoints1">1</label><br>
+                        <input type="radio" id="PRSCalibrationPoints2" name="PRSCalibrationPoints" value="2" onclick="setNumericFieldAmount(2)">
+                        <label for="PRSCalibrationPoints2">2</label><br>
+                        <input type="radio" id="PRSCalibrationPoints3" name="PRSCalibrationPoints" value="3" onclick="setNumericFieldAmount(3)">
+                        <label for="PRSCalibrationPoints3">3</label><br>  
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Solution Values - PRS</label>
+                     <div class="calibSolnValues">
+                        <input type="number" id="PRSCalibrationPoints1Entry" name="PRSSolutionValue1">
+                        <label for="PRSCalibrationPoints1Entry">Point</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>4-20mA Transfer function - PRS</label>
+                     <div>
+                        <input type="number" id="PRSTransferFunction4" name="PRSTransferFunction4">
+                        <label for="PRSTransferFunction4">4 mA</label><br>
+                        <input type="number" id="PRSTransferFunction20" name="PRSTransferFunction20">
+                        <label for="PRSTransferFunction20">20 mA</label><br>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="econfig inactive" id="HUM">
+               <div class="eAttributes">
+                  <div class="attribute">
+                     <label>Units - HUM</label>
+                     <div>
+                        <input type="radio" id="HUMUnitsPPM" name="HUMUnits" value="PPM">
+                        <label for="HUMUnitsPPM">PPM</label><br>
+                        <input type="radio" id="HUMUnitsPercent" name="HUMUnits" value="Percent">
+                        <label for="HUMUnitsPercent">%</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Points - HUM</label>
+                     <div>
+                        <input type="radio" id="HUMCalibrationPoints1" name="HUMCalibrationPoints" value="1" onclick="setNumericFieldAmount(1)">
+                        <label for="HUMCalibrationPoints1">1</label><br>
+                        <input type="radio" id="HUMCalibrationPoints2" name="HUMCalibrationPoints" value="2" onclick="setNumericFieldAmount(2)">
+                        <label for="HUMCalibrationPoints2">2</label><br>
+                        <input type="radio" id="HUMCalibrationPoints3" name="HUMCalibrationPoints" value="3" onclick="setNumericFieldAmount(3)">
+                        <label for="HUMCalibrationPoints3">3</label><br>  
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Solution Values - HUM</label>
+                     <div class="calibSolnValues">
+                        <input type="number" id="HUMCalibrationPoints1Entry" name="HUMSolutionValue1">
+                        <label for="HUMCalibrationPoints1Entry">Point</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>4-20mA Transfer function - HUM</label>
+                     <div>
+                        <input type="number" id="HUMTransferFunction4" name="HUMTransferFunction4">
+                        <label for="HUMTransferFunction4">4 mA</label><br>
+                        <input type="number" id="HUMTransferFunction20" name="HUMTransferFunction20">
+                        <label for="HUMTransferFunction20">20 mA</label><br>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="econfig inactive" id="O2">
+               <div class="eAttributes">
+                  <div class="attribute">
+                     <label>Units - O2</label>
+                     <div>
+                        <input type="radio" id="O2UnitsPPM" name="O2Units" value="PPM">
+                        <label for="O2UnitsPPM">PPM</label><br>
+                        <input type="radio" id="O2UnitsPercent" name="O2Units" value="Percent">
+                        <label for="O2UnitsPercent">%</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Points - O2</label>
+                     <div>
+                        <input type="radio" id="O2CalibrationPoints1" name="O2CalibrationPoints" value="1" onclick="setNumericFieldAmount(1)">
+                        <label for="O2CalibrationPoints1">1</label><br>
+                        <input type="radio" id="O2CalibrationPoints2" name="O2CalibrationPoints" value="2" onclick="setNumericFieldAmount(2)">
+                        <label for="O2CalibrationPoints2">2</label><br>
+                        <input type="radio" id="O2CalibrationPoints3" name="O2CalibrationPoints" value="3" onclick="setNumericFieldAmount(3)">
+                        <label for="O2CalibrationPoints3">3</label><br>  
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>Calibration Solution Values - O2</label>
+                     <div class="calibSolnValues">
+                        <input type="number" id="O2CalibrationPoints1Entry" name="O2SolutionValue1">
+                        <label for="O2CalibrationPoints1Entry">Point</label><br>
+                     </div>
+                  </div>
+                  <div class="attribute">
+                     <label>4-20mA Transfer function - O2</label>
+                     <div>
+                        <input type="number" id="O2TransferFunction4" name="O2TransferFunction4">
+                        <label for="O2TransferFunction4">4 mA</label><br>
+                        <input type="number" id="O2TransferFunction20" name="O2TransferFunction20">
+                        <label for="O2TransferFunction20">20 mA</label><br>
                      </div>
                   </div>
                </div>

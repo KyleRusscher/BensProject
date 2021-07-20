@@ -1,0 +1,22 @@
+<!-- This file is not used in the code.  It is just here to help explain the setup and as a template to make new ezos -->
+<!-- the id of the below field must match the value passed in the ezoSelect function in the tabs -->
+<div class="econfig inactive" id="DO">
+    <div class="eAttributes">
+       <div class="attribute">
+          <!-- inside this div you must have 1 label followed by 1 div -->
+          <label>label</label>
+          <div>
+             <!-- only input tags will have the values pulled.  
+                right now only input types of radio and number will be read.  
+                Can add more inside the getFormData function in main.js -->
+             <input type="radio" id="DOUnitsPPM" name="THIS WILL BE THE KEY IN THE JSON FILE" value="THIS WILL BE THE VALUE IN THE JSON FILE">
+             <label for="DOUnitsPPM">PPM</label><br>
+             <!-- labels are not needed inside here.  you can add as many inputs as 
+                you want and they can be of different types -->
+          </div>
+       </div>
+    </div>
+ </div>
+
+ <!-- if you need to add more ezos you can just take one of the examples in main.html and do a full text replace on that ezo name
+to the new ezo name (DO -> ORM )  and then add / remove inputs as needed-->

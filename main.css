@@ -1,72 +1,83 @@
 #setup1 {
-    background-color: red;
+	background-color: red;
 }
 
 .active {
-    display: block;
+	display: block;
 }
 
 .inactive {
-    display: none;
+	display: none;
 }
 
 html {
-    background-color: #eee8f7;
+	background-color: #eee8f7;
 }
+
 body {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-  }
+	margin: auto;
+	width: 50%;
+	padding: 10px;
+}
 
-  .attribute {
-      padding: 15px;
-      margin: 10px;
-      border-radius: 10px;
-      border: 1px solid silver;
-      background-color: rgba(255, 255, 255, 0.6);
-  }
+.attribute {
+	padding: 15px;
+	margin: 10px;
+	border-radius: 10px;
+	border: 1px solid silver;
+	background-color: rgba(255, 255, 255, 0.6);
+}
 
- #header-topper {
-    background-color: #5c33ae;
-    height: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-top-left-radius: 10px;
-     border-top-right-radius: 10px;
+#header-topper {
+	background-color: #5c33ae;
+	height: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
 
- }
+.header {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	margin-top: 0px;
+}
 
- .header {
-     border-top-left-radius: 0px;
-     border-top-right-radius: 0px;
-     margin-top: 0px;
- }
+#submit {
+	background-color: #5c33ae;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	padding: 10px 22px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+}
 
- #submit {
-     background-color: #5c33ae;
-     color: white;
-     border-radius: 3px;
-     margin: 15px;
-     margin-top: 0px;
-     padding: 10px;
- }
+button {
+	background-color: #5c33ae;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	padding: 10px 22px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+}
 
- .tab {
-     background-color: #5c33ae;
-     color: white;
-     padding: 5px;
+.tab:hover {
+	background-color: #9066e4;
+	color: white;
+}
 
- }
-
- .tab .selected {
-    background-color: #9066e4;
-    color: white;
- }
-
- .tab:hover {
-    background-color: #9066e4;
-    color: white;
-    
-    
+.buttonActive {
+	background-color: #9066e4;
 }
